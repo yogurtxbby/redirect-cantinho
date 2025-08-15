@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redirecionando...</title>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '1391992749383064');
+
+// Registra visualização da página
+fbq('track', 'PageView');
+
+// Registra compra automática
+fbq('track', 'Purchase', { 
+  value: 99.90,        // valor da compra
+  currency: 'BRL'      // moeda
+});
+</script>
+
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1391992749383064&ev=PageView&noscript=1"/>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1391992749383064&ev=Purchase&cd[value]=99.90&cd[currency]=BRL&noscript=1"/>
+</noscript>
+<!-- End Meta Pixel Code -->
+
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      background: #fafafa;
+      color: #333;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 1.5rem;
+    }
+
+    .message {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      line-height: 1.4;
+    }
+
+    .progress {
+      width: 100%;
+      max-width: 360px;
+      height: 8px;
+      background: #e0e0e0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      background: #0088cc;
+      animation: load 3s forwards;
+    }
+
+    @keyframes load {
+      to { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg"
+      alt="Telegram Logo"
+      class="logo"
+    />
+
+    <div class="message">
+      Aguarde só um pouquinho,<br />
+      estamos te redirecionando…
+    </div>
+
+
+    <div class="progress">
+      <div class="progress-bar"></div>
+    </div>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      window.location.href = 'https://t.me/+-bwThypWl_VmMTEx';
+    }, 3000);
+  </script>
+</body>
+</html>
