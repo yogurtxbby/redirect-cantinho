@@ -59,7 +59,7 @@
         if (!window.__purchaseFired) {
           window.__purchaseFired = true;
           fbq('track', 'Purchase', {
-            value: 11.90,
+            value: value: Number((14.90).toFixed(2)),
             currency: 'BRL'
           }, { eventID: eventId });
         }
