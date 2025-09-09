@@ -48,31 +48,35 @@
     <div class="progress"><div class="progress-bar"></div></div>
   </div>
 
-  <script>
-    // Gera um eventId para evitar dedupe indevido (opcional mas ajuda no teste).
-    const eventId = 'purchase_' + Math.random().toString(36).slice(2);
+<script>
+  const eventId = 'purchase_' + Math.random().toString(36).slice(2);
 
-    // Dispara o Purchase e só então redireciona ~1s depois.
-    function firePurchaseAndGo(){
-      try {
-        // dispare UMA vez
-        if (!window.__purchaseFired) {
-          window.__purchaseFired = true;
-          fbq('track', 'Purchase', {
-            value: Number((14.90).toFixed(2)),
-            currency: 'BRL'
-          }, { eventID: eventId });
-        }
-      } catch(e) {}
+  function firePurchaseAndGo() {
+    try {
+      const key = 'purchaseFired_OnlyPlus';
+       var planos = [9.97, 14.87, 19.90];
+       var valorRandom = planos[Math.floor(Math.random() * planos.length)];
+      // Verifica se já foi salvo localmente
+      if (!localStorage.getItem(key)) {
+        // Marca como enviado
+        localStorage.setItem(key, 'true');
 
-      // dá um tempinho para o envio (fb usa sendBeacon, mas esse buffer ajuda)
-      setTimeout(function(){
-        location.replace('https://t.me/+JfKYIISMK3MwNjUx');
-      }, 1200);
-    }
+        fbq('track', 'Purchase', {
+          value: valorRandom,
+          currency: 'BRL'
+        }, { eventID: eventId });
+      }
+    } catch (e) {}
 
-    // Aguarda um pouco para garantir que fbevents carregou e a barra animou
-    setTimeout(firePurchaseAndGo, 1800);
-  </script>
+    // dá um tempo pro pixel enviar e depois redireciona
+    setTimeout(function () {
+      location.replace('https://t.me/+JfKYIISMK3MwNjUx');
+    }, 1200);
+  }
+
+  // Aguarda fbevents carregar e animação terminar
+  setTimeout(firePurchaseAndGo, 1800);
+</script>
+
 </body>
 </html>
