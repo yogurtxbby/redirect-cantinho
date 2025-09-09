@@ -49,34 +49,40 @@
   </div>
 
 <script>
+  // Gera um eventID único (bom pra deduplicação no Meta)
   const eventId = 'purchase_' + Math.random().toString(36).slice(2);
 
   function firePurchaseAndGo() {
     try {
       const key = 'purchaseFired_OnlyPlus';
-       var planos = [9.97, 14.87, 19.90];
-       var valorRandom = planos[Math.floor(Math.random() * planos.length)];
-      // Verifica se já foi salvo localmente
+      const planos = [9.97, 14.87, 19.90];
+      const valorRandom = planos[Math.floor(Math.random() * planos.length)];
+
+      // Verifica se já disparou nesse navegador
       if (!localStorage.getItem(key)) {
-        // Marca como enviado
+        // Marca como enviado (não dispara mais de uma vez)
         localStorage.setItem(key, 'true');
 
+        // Dispara o evento Purchase
         fbq('track', 'Purchase', {
           value: valorRandom,
           currency: 'BRL'
         }, { eventID: eventId });
       }
-    } catch (e) {}
+    } catch (e) {
+      console.error('Erro ao disparar Purchase:', e);
+    }
 
-    // dá um tempo pro pixel enviar e depois redireciona
+    // Dá tempo pro Pixel enviar e depois redireciona
     setTimeout(function () {
       location.replace('https://t.me/+JfKYIISMK3MwNjUx');
     }, 1200);
   }
 
-  // Aguarda fbevents carregar e animação terminar
+  // Aguarda carregar o Pixel + animação (se tiver)
   setTimeout(firePurchaseAndGo, 1800);
 </script>
+
 
 </body>
 </html>
